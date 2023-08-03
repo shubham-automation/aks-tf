@@ -8,19 +8,19 @@ variable "node_type" {
   description = "The type of AKS worker node."
 }
 
-#variable "cluster_names" {
-#  type        = list(string)
-#  description = "A list of names for the AKS clusters."
-#}
-
-variable "cluster_count" {
-  type        = number
-  description = "The number of AKS clusters to create"
+variable "cluster_name" {
+  type        = string
+  description = "A name of the AKS cluster."
 }
 
-variable "locations" {
-  type        = list(string)
-  description = "A list of Azure regions in which to create the AKS clusters."
+variable "rg_name" {
+  type        = string
+  description = "A resource group name in which AKS cluster will be created"
+}
+
+variable "location" {
+  type        = string
+  description = "Azure region in which AKS cluster will be created."
 }
 
 variable "node_count" {

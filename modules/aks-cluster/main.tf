@@ -1,10 +1,9 @@
 resource "azurerm_kubernetes_cluster" "aks_clusters" {
-  count = var.cluster_count
-  #name                = var.cluster_names[count.index]
-  name                = "${var.locations[count.index]}-aks"
-  location            = var.locations[count.index]
-  resource_group_name = "${var.locations[count.index]}-aks-rg"
-  dns_prefix          = "${var.locations[count.index]}-aks"
+
+  name                = var.cluster_name
+  location            = var.location
+  resource_group_name = var.rg_name
+  dns_prefix          = var.cluster_name
   kubernetes_version  = var.kubernetes_version
   #node_resource_group = "${var.cluster_names[count.index]}-nodes"
 
@@ -21,9 +20,5 @@ resource "azurerm_kubernetes_cluster" "aks_clusters" {
   #  }
   identity {
     type = "SystemAssigned"
-  }
-
-  tags = {
-    Environment = "Dev"
   }
 }

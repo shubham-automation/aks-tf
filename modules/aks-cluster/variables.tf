@@ -42,3 +42,8 @@ variable "kubernetes_version" {
   type        = string
   description = "The k8s version for the AKS clusters."
 }
+
+variable "subnet_id" {
+  type        = string
+  description = "ID of the subnet"
+}

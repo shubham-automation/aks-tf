@@ -8,10 +8,12 @@ resource "azurerm_kubernetes_cluster" "aks_clusters" {
   #node_resource_group = "${var.cluster_names[count.index]}-nodes"
 
   default_node_pool {
-    name       = "default"
-    node_count = var.node_count
-    vm_size    = var.node_type
-    type       = "VirtualMachineScaleSets"
+    name           = "default"
+    node_count     = var.node_count
+    vm_size        = var.node_type
+    type           = "VirtualMachineScaleSets"
+    vnet_subnet_id = var.subnet_id
+    #vnet_subnet_id = "/subscriptions/a5187816-4fc6-448e-8c9c-efecad75ef44/resourceGroups/accelitas-kubernetes-dev/providers/Microsoft.Network/virtualNetworks/accelitas-kubernetes-vnet/subnets/default"
   }
 
   #  service_principal {

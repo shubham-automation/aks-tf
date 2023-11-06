@@ -55,11 +55,21 @@ variable "resource_group_name" {
 }
 
 variable "subnet_cidr_range" {
-  type = string
+  type        = string
   description = "Subnet CIDR Range"
 }
 
 variable "vnet_cidr_range" {
-  type = string
+  type        = string
   description = "Vnet CIDR Range"
+}
+
+variable "vnet_name" {
+  type        = string
+  description = "Vnet Name"
+}
+
+variable "subnet_name" {
+  type        = string
+  description = "Subnet Name"
 }

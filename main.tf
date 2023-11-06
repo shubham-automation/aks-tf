@@ -6,17 +6,19 @@ module "resource_group" {
 }
 
 module "vnet" {
-  source = "./modules/vnet"
-  location = var.location
+  source              = "./modules/vnet"
+  location            = var.location
   resource_group_name = var.is_new_resource_group == true ? module.resource_group[0].resource_group_name : var.exisiting_resource_group_name
-  vnet_cidr_range = var.vnet_cidr_range
+  vnet_cidr_range     = var.vnet_cidr_range
+  vnet_name           = var.vnet_name
 }
 
 module "subnet" {
-  source = "./modules/subnet"
+  source              = "./modules/subnet"
   resource_group_name = var.is_new_resource_group == true ? module.resource_group[0].resource_group_name : var.exisiting_resource_group_name
-  subnet_cidr_range = var.subnet_cidr_range
-  vnet_name = module.vnet.vnet_name
+  subnet_cidr_range   = var.subnet_cidr_range
+  vnet_name           = module.vnet.vnet_name
+  subnet_name         = var.subnet_name
 }
 
 module "aks_cluster" {
